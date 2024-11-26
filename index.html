@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>First Person Game</title>
+    <style>
+        body { margin: 0; }
+        canvas { display: block; }
+        
+        #pauseMenu {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+
+        #pauseMenu button {
+            display: block;
+            width: 200px;
+            margin: 10px auto;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        #pauseMenu button:hover {
+            background-color: #45a049;
+        }
+
+        .menu-title {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .hud-text {
+            position: fixed;
+            color: white;
+            font-family: Arial, sans-serif;
+            pointer-events: none;
+        }
+
+        #pausePrompt {
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 18px;
+        }
+
+        #versionText {
+            bottom: 10px;
+            left: 10px;
+            font-size: 14px;
+            opacity: 0.7;
+        }
+
+        #optionsMenu {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+
+        .slider-container {
+            margin: 20px 0;
+            text-align: left;
+        }
+
+        .slider-container label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .slider-container input {
+            width: 200px;
+        }
+
+        .slider-value {
+            display: inline-block;
+            margin-left: 10px;
+        }
+
+        #startPrompt {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-family: Arial, sans-serif;
+            font-size: 24px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="pauseMenu">
+        <div class="menu-title">Jogo Pausado</div>
+        <button id="resumeButton">Continuar</button>
+        <button id="restartButton">Reiniciar</button>
+        <button id="settingsButton">Opções</button>
+        <button id="quitButton">Sair para o Menu</button>
+    </div>
+    <div id="optionsMenu">
+        <div class="menu-title">Opções</div>
+        <div class="slider-container">
+            <label for="sensitivity">Sensibilidade do Mouse</label>
+            <input type="range" id="sensitivity" min="0.1" max="2" step="0.1" value="1">
+            <span class="slider-value" id="sensitivityValue">1.0</span>
+        </div>
+        <button id="saveOptionsButton">Salvar</button>
+        <button id="cancelOptionsButton">Cancelar</button>
+    </div>
+    <div id="startPrompt">Clique em qualquer lugar para começar</div>
+    <div id="pausePrompt" class="hud-text">Pressione ESC para pausar</div>
+    <div id="versionText" class="hud-text">WebWalker Teste Dev 0.01</div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/PointerLockControls.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/CubeTextureLoader.js"></script>
+    <script src="game.js"></script>
+</body>
+</html> 
